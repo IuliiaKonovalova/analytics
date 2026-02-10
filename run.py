@@ -1,8 +1,15 @@
-import gspread
+import json, gspread
 from google.oauth2.service_account import Credentials
 import pandas as pd
 from collections import Counter
 import re
+
+
+with open("google-sheet.json", "r", encoding="utf-8") as f:
+    sheet_info = json.load(f)
+
+sheet_url = sheet_info["sheet-url"]
+
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
@@ -10,7 +17,7 @@ creds = Credentials.from_service_account_file("google-api-credentials.json", sco
 client = gspread.authorize(creds)
 
 spreadsheet = client.open_by_url(
-    "https://docs.google.com/spreadsheets/d/1MP_F7sicbKw1uqijPU1NFNL9LYGV_g1souTzGI7v2BA/edit"
+   sheet_url
 )
 
 worksheet = spreadsheet.sheet1
