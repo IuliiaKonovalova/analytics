@@ -16,9 +16,7 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 creds = Credentials.from_service_account_file("google-api-credentials.json", scopes=SCOPES)
 client = gspread.authorize(creds)
 
-spreadsheet = client.open_by_url(
-   sheet_url
-)
+spreadsheet = client.open_by_url(sheet_url)
 
 worksheet = spreadsheet.sheet1
 data = pd.DataFrame(worksheet.get_all_records())
