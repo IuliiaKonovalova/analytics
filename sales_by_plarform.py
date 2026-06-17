@@ -27,7 +27,7 @@ spreadsheet = client.open_by_url(sheet_url)
 print("Connected to Google Sheet successfully.")
 
 worksheet = spreadsheet.sheet1
-data = pd.DataFrame(worksheet.get_all_records())
+data = pd.DataFrame(worksheet.get_all_values())
 tracker_sheet = spreadsheet.worksheet("Tracker") 
 
 
@@ -39,7 +39,8 @@ sales_by_platform_tab = spreadsheet.worksheet("Sales by Platform")
 # -----------------------------
 # LOAD TRACKER
 # -----------------------------
-tracker_df = pd.DataFrame(tracker_sheet.get_all_records())
+values = tracker_sheet.get_all_values()
+tracker_df = pd.DataFrame(values[1:], columns=values[0])
 
 # Clean columns
 tracker_df.columns = tracker_df.columns.str.strip()
