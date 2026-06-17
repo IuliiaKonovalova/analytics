@@ -28,7 +28,7 @@ print("Connected to Google Sheet successfully.")
 # print(spreadsheet.sheet1.get_all_records()[:5])  # Print first 5 rows for preview
 
 worksheet = spreadsheet.sheet1
-data = pd.DataFrame(worksheet.get_all_records())
+data = pd.DataFrame(worksheet.get_all_values())
 tracker_sheet = spreadsheet.worksheet("Tracker") 
 # get DATE SUM column
 date_sum_col = tracker_sheet.col_values(tracker_sheet.find("DATE SUM").col)[1:]  # Skip header
