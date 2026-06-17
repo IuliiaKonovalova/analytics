@@ -44,7 +44,8 @@ print("Connected to Google Sheet successfully.")
 # LOAD TRACKER DATA
 # -----------------------------
 tracker_sheet = spreadsheet.worksheet("Tracker")
-tracker_df = pd.DataFrame(tracker_sheet.get_all_records())
+values = tracker_sheet.get_all_values()
+tracker_df = pd.DataFrame(values[1:], columns=values[0])
 
 # Clean columns
 tracker_df.columns = tracker_df.columns.str.strip()
