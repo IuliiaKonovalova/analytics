@@ -10,3 +10,4 @@ cloudinary_python.txt
 .venv
 google-api-credentials.json
 google-sheet.json
+.env
